@@ -1,0 +1,10 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="common.lua"/>
+	<Script file="Shadowlands\common.lua"/>
+	<Script file="Shadowlands\Cloth.lua"/>
+	<Script file="Shadowlands\Fish.lua"/>
+	<Script file="Shadowlands\Herb.lua"/>
+	<Script file="Shadowlands\Leather.lua"/>
+	<Script file="Shadowlands\Meat.lua"/>
+	<Script file="Shadowlands\Ore.lua"/>
+</Ui>

@@ -1,0 +1,16 @@
+## Interface: 90207
+## Title: Glocktracker
+## Author: Glockness
+## Version: 0.0.1
+## SavedVariables: GlockTrackerDB
+## X-License: All rights reserved (See license.md)
+## X-Category: Professions
+## X-Embeds: Ace3, LibQTip-1.0, CallbackHandler-1.0, LibStub, LibDataBroker-1.1
+Libs\LibQTip-1.0\LibQTip-1.0.lua
+
+Modules\Glockframe.lua
+Modules\GlockButton.lua
+Modules\GlockLabel.lua
+Modules\GlockTrackingWindow.lua
+
+embeds.xml
