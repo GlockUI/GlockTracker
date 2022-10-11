@@ -4,6 +4,25 @@ local LibQTip = LibStub('LibQTip-1.0');
 local iconWidget;
 local playerName;
 
+local function PrintRuns(runs, dugeonName, tooltip)
+    tooltip:AddHeader(dugeonName);
+
+	if #runs > 0 then
+        for i=1,#runs do
+            local run = runs[i];
+            if(run.completed) then
+                tooltip:AddLine("Level:" .. run.level, "Timed Successfull!");
+            else
+                tooltip:AddLine("Level:" .. run.level, "Not Successfull!");
+            end
+        end
+    else
+        tooltip:AddLine("No Mythic+ runs recorded for this week.");
+    end
+     tooltip:AddLine("");
+     tooltip:AddLine("");
+end
+
 local function OnImageEnter(self)
 	local tooltip = LibQTip:Acquire("GlockTracker-MythicsTooltip", 2, "LEFT", "LEFT");
 	self.tooltip = tooltip;
@@ -83,24 +102,6 @@ local function OnImageEnter(self)
    
 	tooltip:Show();
 end
-
-local function PrintRuns(runs, dugeonName, tooltip)
-    tooltip:AddHeader(dugeonName);
-
-	if #runs > 0 then
-        for i=1,#runs do
-            local run = runs[i];
-            if(run.completed) then
-                tooltip:AddLine("Level:" .. run.level, "Timed Successfull!");
-            else
-                tooltip:AddLine("Level:" .. run.level, "Not Successfull!");
-            end
-        end
-    else
-        tooltip:AddLine("No Mythic+ runs recorded for this week.");
-    end
-end
-
 
 local function OnImageLeave(self)
    LibQTip:Release(self.tooltip)
