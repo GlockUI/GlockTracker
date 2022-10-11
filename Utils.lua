@@ -421,3 +421,20 @@ function GlockTracker:CreateRow(labelName, bag, reagent, bank, need)
     group:AddChild(bankLabel);
     return group;
 end
+
+function GlockTracker:CreateLine(labelName, location, bag, reagent, bank, need, toolTip)
+     if (need > 0) then
+        toolTip:AddLine(labelName, location, "Need:" .. need, "Bag:" .. bag, "Reagent:" .. reagent, "Bank:" .. bank);
+    else
+        toolTip:AddLine(labelName, location, "Need: 0", "Bag:" .. bag, "Reagent:" .. reagent, "Bank:" .. bank);
+    end
+end
+
+function GlockTracker:CreateTopBarIcon(label, imagePath)
+	local icon = AceGUI:Create("Icon");
+    icon:SetLabel(label);
+    icon:SetImage(imagePath);
+    icon:SetImageSize(25,25);
+
+    return icon;
+end

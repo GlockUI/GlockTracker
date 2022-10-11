@@ -1,57 +1,74 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker");
+local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker")
 
-function GlockTracker:PrintSlOre(playerOre, itemFrame)
-    local grp = GlockTracker:CreateInlineGroup("Ore");
+function GlockTracker:PrintSlOreTooltip(playerName, tooltip)
 
-    grp:AddChild(GlockTracker:CreateRow(
+    local playerOre = GlockTracker:GetOreSlDb(playerName);
+
+    tooltip:AddHeader("Shadowlands:");
+
+    GlockTracker:CreateLine(
         L["Laestrite"],
+        L["LaestriteLocation"],
         playerOre.LaestriteOre.Bag,
         playerOre.LaestriteOre.ReagentBank,
         playerOre.LaestriteOre.Bank,
-        (GlockTracker:GetLaestriteNeeded() - (playerOre.LaestriteOre.Bag + playerOre.LaestriteOre.ReagentBank + playerOre.LaestriteOre.Bank))
-    ));
+        (GlockTracker:GetLaestriteNeeded() - (playerOre.LaestriteOre.Bag + playerOre.LaestriteOre.ReagentBank + playerOre.LaestriteOre.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Elethium"],
+        L["ElethiumLocation"],
         playerOre.ElethiumOre.Bag,
         playerOre.ElethiumOre.ReagentBank,
         playerOre.ElethiumOre.Bank,
-        (GlockTracker:GetElethiumNeeded() - (playerOre.ElethiumOre.Bag + playerOre.ElethiumOre.ReagentBank + playerOre.ElethiumOre.Bank))
-    ));
+        (GlockTracker:GetElethiumNeeded() - (playerOre.ElethiumOre.Bag + playerOre.ElethiumOre.ReagentBank + playerOre.ElethiumOre.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Solenium"],
+        L["SoleniumLocation"],
         playerOre.SoleniumOre.Bag,
         playerOre.SoleniumOre.ReagentBank,
         playerOre.SoleniumOre.Bank,
-        (GlockTracker:GetSoleniumNeeded() - (playerOre.SoleniumOre.Bag + playerOre.SoleniumOre.ReagentBank + playerOre.SoleniumOre.Bank))
-    ));
+        (GlockTracker:GetSoleniumNeeded() - (playerOre.SoleniumOre.Bag + playerOre.SoleniumOre.ReagentBank + playerOre.SoleniumOre.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Oxxein"],
+        L["OxxeinLocation"],
         playerOre.OxxeinOre.Bag,
         playerOre.OxxeinOre.ReagentBank,
         playerOre.OxxeinOre.Bank,
-        (GlockTracker:GetOxxeinNeeded() - (playerOre.OxxeinOre.Bag + playerOre.OxxeinOre.ReagentBank + playerOre.OxxeinOre.Bank))
-    ));
+        (GlockTracker:GetOxxeinNeeded() - (playerOre.OxxeinOre.Bag + playerOre.OxxeinOre.ReagentBank + playerOre.OxxeinOre.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Phaedrum"],
+        L["PhaedrumLocation"],
         playerOre.PhaedrumOre.Bag,
         playerOre.PhaedrumOre.ReagentBank,
         playerOre.PhaedrumOre.Bank,
-        (GlockTracker:GetPhaedrumNeeded() - (playerOre.PhaedrumOre.Bag + playerOre.PhaedrumOre.ReagentBank + playerOre.PhaedrumOre.Bank))
-    ));
+        (GlockTracker:GetPhaedrumNeeded() - (playerOre.PhaedrumOre.Bag + playerOre.PhaedrumOre.ReagentBank + playerOre.PhaedrumOre.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Sinvyr"],
+        L["SinvyrLocation"],
         playerOre.SinvyrOre.Bag,
         playerOre.SinvyrOre.ReagentBank,
         playerOre.SinvyrOre.Bank,
-        (GlockTracker:GetSinvyrNeeded() - (playerOre.SinvyrOre.Bag + playerOre.SinvyrOre.ReagentBank + playerOre.SinvyrOre.Bank))
-    ));
+        (GlockTracker:GetSinvyrNeeded() - (playerOre.SinvyrOre.Bag + playerOre.SinvyrOre.ReagentBank + playerOre.SinvyrOre.Bank)),
+        tooltip
+    );
+end
 
-    itemFrame:AddChild(grp)
+function GlockTracker:GetOreSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Ore
 end
 
 function GlockTracker:CanShowSlOre(info)
@@ -60,7 +77,6 @@ end
 
 function GlockTracker:SetLaestriteNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Laestrite.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetLaestriteNeeded(info)
@@ -69,7 +85,6 @@ end
 
 function GlockTracker:SetElethiumNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Elethium.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetElethiumNeeded(info)
@@ -78,7 +93,6 @@ end
 
 function GlockTracker:SetSoleniumNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Solenium.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetSoleniumNeeded(info)
@@ -87,7 +101,6 @@ end
 
 function GlockTracker:SetOxxeinNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Oxxein.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetOxxeinNeeded(info)
@@ -96,7 +109,6 @@ end
 
 function GlockTracker:SetPhaedrumNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Phaedrum.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetPhaedrumNeeded(info)
@@ -105,7 +117,6 @@ end
 
 function GlockTracker:SetSinvyrNeeded(info, val)
     self.db.profile.Shadowlands.Ore.Sinvyr.Need = val;
-    --GlockTracker:ReloadLabel();
 end
 
 function GlockTracker:GetSinvyrNeeded(info)

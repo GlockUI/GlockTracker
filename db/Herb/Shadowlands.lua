@@ -1,57 +1,74 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker")
 
-function GlockTracker:PrintSlCloth(playerHerbs, itemFrame)
-    local grp = GlockTracker:CreateInlineGroup("Cloth");
+function GlockTracker:PrintSlHerbTooltip(playerName, tooltip)
+    local playerHerbs = GlockTracker:GetHerbSlDb(playerName);
 
-    grp:AddChild(GlockTracker:CreateRow(
+    tooltip:AddHeader("Shadowlands:");
+
+    GlockTracker:CreateLine(
         L["DeathBlossom"],
+        L["DeathBlossomLocation"],
         playerHerbs.DeathBlossom.Bag,
         playerHerbs.DeathBlossom.ReagentBank,
         playerHerbs.DeathBlossom.Bank,
-        (GlockTracker:GetDeathblossomNeeded() - (playerHerbs.DeathBlossom.Bag + playerHerbs.DeathBlossom.ReagentBank + playerHerbs.DeathBlossom.Bank))
-    ));
+        (GlockTracker:GetDeathblossomNeeded() - (playerHerbs.DeathBlossom.Bag + playerHerbs.DeathBlossom.ReagentBank + playerHerbs.DeathBlossom.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Nightshade"],
+        L["NightshadeLocation"],
         playerHerbs.NightShade.Bag,
         playerHerbs.NightShade.ReagentBank,
         playerHerbs.NightShade.Bank,
-        (GlockTracker:GetNightShadeNeeded() - (playerHerbs.NightShade.Bag + playerHerbs.NightShade.ReagentBank + playerHerbs.NightShade.Bank))
-    ));
+        (GlockTracker:GetNightShadeNeeded() - (playerHerbs.NightShade.Bag + playerHerbs.NightShade.ReagentBank + playerHerbs.NightShade.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["RisingGlory"],
+        L["RisingGloryLocation"],
         playerHerbs.RisingGlory.Bag,
         playerHerbs.RisingGlory.ReagentBank,
         playerHerbs.RisingGlory.Bank,
-        (GlockTracker:GetRisingGloryNeeded() - (playerHerbs.RisingGlory.Bag + playerHerbs.RisingGlory.ReagentBank + playerHerbs.RisingGlory.Bank))
-    ));
+        (GlockTracker:GetRisingGloryNeeded() - (playerHerbs.RisingGlory.Bag + playerHerbs.RisingGlory.ReagentBank + playerHerbs.RisingGlory.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["MarrowRoot"],
+        L["MarrowRootLocation"],
         playerHerbs.Marrowroot.Bag,
         playerHerbs.Marrowroot.ReagentBank,
         playerHerbs.Marrowroot.Bank,
-        (GlockTracker:GetMarrowRootNeeded() - (playerHerbs.Marrowroot.Bag + playerHerbs.Marrowroot.ReagentBank + playerHerbs.Marrowroot.Bank))
-    ));
+        (GlockTracker:GetMarrowRootNeeded() - (playerHerbs.Marrowroot.Bag + playerHerbs.Marrowroot.ReagentBank + playerHerbs.Marrowroot.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Widowbloom"],
+        L["WidowbloomLocation"],
         playerHerbs.Widowbloom.Bag,
         playerHerbs.Widowbloom.ReagentBank,
         playerHerbs.Widowbloom.Bank,
-        (GlockTracker:GetWidowbloomNeeded() - (playerHerbs.Widowbloom.Bag + playerHerbs.Widowbloom.ReagentBank + playerHerbs.Widowbloom.Bank))
-    ));
+        (GlockTracker:GetWidowbloomNeeded() - (playerHerbs.Widowbloom.Bag + playerHerbs.Widowbloom.ReagentBank + playerHerbs.Widowbloom.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["VigilsTorch"],
+        L["VigilsTorchLocation"],
         playerHerbs.VigilsTorch.Bag,
         playerHerbs.VigilsTorch.ReagentBank,
         playerHerbs.VigilsTorch.Bank,
-        (GlockTracker:GetVigilsTorchNeeded() - (playerHerbs.VigilsTorch.Bag + playerHerbs.VigilsTorch.ReagentBank + playerHerbs.VigilsTorch.Bank))
-    ));
+        (GlockTracker:GetVigilsTorchNeeded() - (playerHerbs.VigilsTorch.Bag + playerHerbs.VigilsTorch.ReagentBank + playerHerbs.VigilsTorch.Bank)),
+        tooltip
+    );
 
-    itemFrame:AddChild(grp)
+end
+
+function GlockTracker:GetHerbSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Herbs
 end
 
 function GlockTracker:CanShowSlHerbs(info)
@@ -60,7 +77,6 @@ end
 
 function GlockTracker:SetDeathblossomNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.DeathBlossom.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetDeathblossomNeeded(info)
@@ -69,7 +85,6 @@ end
 
 function GlockTracker:SetNightShadeNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.Nightshade.Need = val;
-    --Glockfarmer:ReloadLabel()
 end
 
 function GlockTracker:GetNightShadeNeeded(info)
@@ -78,7 +93,6 @@ end
 
 function GlockTracker:SetRisingGloryNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.RisingGlory.Need = val;
-    --Glockfarmer:ReloadLabel()
 end
 
 function GlockTracker:GetRisingGloryNeeded(info)
@@ -87,7 +101,6 @@ end
 
 function GlockTracker:SetMarrowRootNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.Marrowroot.Need = val;
-    --Glockfarmer:ReloadLabel()
 end
 
 function GlockTracker:GetMarrowRootNeeded(info)
@@ -96,7 +109,6 @@ end
 
 function GlockTracker:SetWidowbloomNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.Widowbloom.Need = val;
-    --Glockfarmer:ReloadLabel()
 end
 
 function GlockTracker:GetWidowbloomNeeded(info)
@@ -105,7 +117,6 @@ end
 
 function GlockTracker:SetVigilsTorchNeeded(info, val)
     self.db.profile.Shadowlands.Herbs.VigilsTorch.Need = val;
-    --Glockfarmer:ReloadLabel()
 end
 
 function GlockTracker:GetVigilsTorchNeeded(info)

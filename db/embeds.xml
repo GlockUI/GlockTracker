@@ -1,10 +1,21 @@
 <Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
 	<Script file="common.lua"/>
-	<Script file="Shadowlands\common.lua"/>
-	<Script file="Shadowlands\Cloth.lua"/>
-	<Script file="Shadowlands\Fish.lua"/>
-	<Script file="Shadowlands\Herb.lua"/>
-	<Script file="Shadowlands\Leather.lua"/>
-	<Script file="Shadowlands\Meat.lua"/>
-	<Script file="Shadowlands\Ore.lua"/>
+
+	<Script file="Cloth\Common.lua" />
+	<Script file="Cloth\Shadowlands.lua" />
+
+	<Script file="Fish\Common.lua" />
+	<Script file="Fish\Shadowlands.lua" />
+	
+	<Script file="Herb\Common.lua" />
+	<Script file="Herb\Shadowlands.lua" />
+
+	<Script file="Leather\Common.lua" />
+	<Script file="Leather\Shadowlands.lua" />
+
+	<Script file="Meat\Common.lua" />
+	<Script file="Meat\Shadowlands.lua" />
+
+	<Script file="Ore\Common.lua" />
+	<Script file="Ore\Shadowlands.lua" />
 </Ui>

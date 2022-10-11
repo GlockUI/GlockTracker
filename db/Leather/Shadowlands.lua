@@ -1,33 +1,44 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker");
+local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker")
 
-function GlockTracker:PrintSlLeather(playerLeather, itemFrame)
-    local grp = GlockTracker:CreateInlineGroup("Leather");
+function GlockTracker:PrintSlLeatherTooltip(playerName, tooltip)
 
-    grp:AddChild(GlockTracker:CreateRow(
+    local playerLeather = GlockTracker:GetLeatherSlDb(playerName);
+
+    tooltip:AddHeader("Shadowlands:");
+
+    GlockTracker:CreateLine(
         L["Desolate"],
+        L["DesolateLocation"],
         playerLeather.DesolateLeather.Bag,
         playerLeather.DesolateLeather.ReagentBank,
         playerLeather.DesolateLeather.Bank,
-        (GlockTracker:GetDesolateNeeded() - (playerLeather.DesolateLeather.Bag + playerLeather.DesolateLeather.ReagentBank + playerLeather.DesolateLeather.Bank))
-    ));
+        (GlockTracker:GetDesolateNeeded() - (playerLeather.DesolateLeather.Bag + playerLeather.DesolateLeather.ReagentBank + playerLeather.DesolateLeather.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["PallidBone"],
+        L["PallidBoneLocation"],
         playerLeather.PallidBone.Bag,
         playerLeather.PallidBone.ReagentBank,
         playerLeather.PallidBone.Bank,
-        (GlockTracker:GetPallidBoneNeeded() - (playerLeather.PallidBone.Bag + playerLeather.PallidBone.ReagentBank + playerLeather.PallidBone.Bank))
-    ));
+        (GlockTracker:GetPallidBoneNeeded() - (playerLeather.PallidBone.Bag + playerLeather.PallidBone.ReagentBank + playerLeather.PallidBone.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["CallousHide"],
+        L["CallousHideLocation"],
         playerLeather.CallousHide.Bag,
         playerLeather.CallousHide.ReagentBank,
         playerLeather.CallousHide.Bank,
-        (GlockTracker:GetCallousNeeded() - (playerLeather.CallousHide.Bag + playerLeather.CallousHide.ReagentBank + playerLeather.CallousHide.Bank))
-    ));
+        (GlockTracker:GetCallousNeeded() - (playerLeather.CallousHide.Bag + playerLeather.CallousHide.ReagentBank + playerLeather.CallousHide.Bank)),
+        tooltip
+    );
+end
 
-    itemFrame:AddChild(grp)
+function GlockTracker:GetLeatherSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Leather
 end
 
 function GlockTracker:CanShowSlLeather(info)
@@ -36,7 +47,6 @@ end
 
 function GlockTracker:SetDesolateNeeded(info, val)
     self.db.profile.Shadowlands.Leather.Desolate.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetDesolateNeeded(info)
@@ -45,7 +55,6 @@ end
 
 function GlockTracker:SetPallidBoneNeeded(info, val)
     self.db.profile.Shadowlands.Leather.PallidBone.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetPallidBoneNeeded(info)
@@ -54,7 +63,6 @@ end
 
 function GlockTracker:SetCallousNeeded(info, val)
     self.db.profile.Shadowlands.Leather.Callous.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetCallousNeeded(info)

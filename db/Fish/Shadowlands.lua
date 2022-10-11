@@ -1,57 +1,74 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker");
 
-function GlockTracker:PrintSlFish(playerFish, itemFrame)
-    local grp = GlockTracker:CreateInlineGroup("Fish");
+function GlockTracker:PrintSlFishTooltip(playerName, tooltip)
+    local playerFish = GlockTracker:GetFishSlDb(playerName);
 
-    grp:AddChild(GlockTracker:CreateRow(
+    tooltip:AddHeader("Shadowlands:");
+
+    GlockTracker:CreateLine(
         L["LostSole"],
+        L["LostSoleLocation"],
         playerFish.LostSole.Bag,
         playerFish.LostSole.ReagentBank,
         playerFish.LostSole.Bank,
-        (GlockTracker:GetLostSoleNeeded() - (playerFish.LostSole.Bag + playerFish.LostSole.ReagentBank + playerFish.LostSole.Bank))
-    ));
+        (GlockTracker:GetLostSoleNeeded() - (playerFish.LostSole.Bag + playerFish.LostSole.ReagentBank + playerFish.LostSole.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["SilverPike"],
+        L["SilverPikeLocation"],
         playerFish.SilverPike.Bag,
         playerFish.SilverPike.ReagentBank,
         playerFish.SilverPike.Bank,
-        (GlockTracker:GetSilverPikeNeeded() - (playerFish.SilverPike.Bag + playerFish.SilverPike.ReagentBank + playerFish.SilverPike.Bank))
-    ));
+        (GlockTracker:GetSilverPikeNeeded() - (playerFish.SilverPike.Bag + playerFish.SilverPike.ReagentBank + playerFish.SilverPike.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["PocketBonefish"],
+        L["PocketBonefishLocation"],
         playerFish.PoketBoneFish.Bag,
         playerFish.PoketBoneFish.ReagentBank,
         playerFish.PoketBoneFish.Bank,
-        (GlockTracker:GetPocketBonefishNeeded() - (playerFish.PoketBoneFish.Bag + playerFish.PoketBoneFish.ReagentBank + playerFish.PoketBoneFish.Bank))
-    ));
+        (GlockTracker:GetPocketBonefishNeeded() - (playerFish.PoketBoneFish.Bag + playerFish.PoketBoneFish.ReagentBank + playerFish.PoketBoneFish.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Iridescent"],
+        L["IridescentLocation"],
         playerFish.Iridescent.Bag,
         playerFish.Iridescent.ReagentBank,
         playerFish.Iridescent.Bank,
-        (GlockTracker:GetIridescentNeeded() - (playerFish.Iridescent.Bag + playerFish.Iridescent.ReagentBank + playerFish.Iridescent.Bank))
-    ));
+        (GlockTracker:GetIridescentNeeded() - (playerFish.Iridescent.Bag + playerFish.Iridescent.ReagentBank + playerFish.Iridescent.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["SpinefinPiranha"],
+        L["SpinefinPiranhaLocation"],
         playerFish.SpinefinPiranha.Bag,
         playerFish.SpinefinPiranha.ReagentBank,
         playerFish.SpinefinPiranha.Bank,
-        (GlockTracker:GetSpinefinPiranhaNeeded() - (playerFish.SpinefinPiranha.Bag + playerFish.SpinefinPiranha.ReagentBank + playerFish.SpinefinPiranha.Bank))
-    ));
+        (GlockTracker:GetSpinefinPiranhaNeeded() - (playerFish.SpinefinPiranha.Bag + playerFish.SpinefinPiranha.ReagentBank + playerFish.SpinefinPiranha.Bank)),
+        tooltip
+    );
 
-    grp:AddChild(GlockTracker:CreateRow(
+    GlockTracker:CreateLine(
         L["Elysian"],
+        L["ElysianLocation"],
         playerFish.Elysian.Bag,
         playerFish.Elysian.ReagentBank,
         playerFish.Elysian.Bank,
-        (GlockTracker:GetElysianNeeded() - (playerFish.Elysian.Bag + playerFish.Elysian.ReagentBank + playerFish.Elysian.Bank))
-    ));
+        (GlockTracker:GetElysianNeeded() - (playerFish.Elysian.Bag + playerFish.Elysian.ReagentBank + playerFish.Elysian.Bank)),
+        tooltip
+    );
 
-    itemFrame:AddChild(grp)
+end
+
+function GlockTracker:GetFishSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Fish
 end
 
 function GlockTracker:CanShowSlFish(info)
@@ -60,7 +77,6 @@ end
 
 function GlockTracker:SetLostSoleNeeded(info, val)
     self.db.profile.Shadowlands.Fish.LostSole.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetLostSoleNeeded(info)
@@ -69,7 +85,6 @@ end
 
 function GlockTracker:SetSilverPikeNeeded(info, val)
     self.db.profile.Shadowlands.Fish.SilverPike.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetSilverPikeNeeded(info)
@@ -78,7 +93,6 @@ end
 
 function GlockTracker:SetPocketBonefishNeeded(info, val)
     self.db.profile.Shadowlands.Fish.PocketBonefish.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetPocketBonefishNeeded(info)
@@ -87,7 +101,6 @@ end
 
 function GlockTracker:SetIridescentNeeded(info, val)
     self.db.profile.Shadowlands.Fish.Iridescent.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetIridescentNeeded(info)
@@ -96,7 +109,6 @@ end
 
 function GlockTracker:SetSpinefinPiranhaNeeded(info, val)
     self.db.profile.Shadowlands.Fish.SpinefinPiranha.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetSpinefinPiranhaNeeded(info)
@@ -105,7 +117,6 @@ end
 
 function GlockTracker:SetElysianNeeded(info, val)
     self.db.profile.Shadowlands.Fish.Elysian.Need = val;
-    --Glockfarmer:ReloadLabel();
 end
 
 function GlockTracker:GetElysianNeeded(info)

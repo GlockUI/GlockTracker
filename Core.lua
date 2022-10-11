@@ -1,5 +1,5 @@
 GlockTracker = LibStub("AceAddon-3.0"):NewAddon("GlockTracker", "AceConsole-3.0", "AceEvent-3.0");
-window = LibStub("AceAddon-3.0"):GetAddon("GlockTrackingWindow");
+topBar = LibStub("AceAddon-3.0"):GetAddon("GlockTopBar");
 AceEvent = LibStub("AceEvent-3.0");
 local L = LibStub("AceLocale-3.0"):GetLocale("GlockTracker");
 AceGUI = LibStub("AceGUI-3.0");
@@ -21,8 +21,14 @@ end
 
 function GlockTracker:OnInitialize()
     GlockTracker:SetupOptions();
-    window:CreateWindow();
-    window:Open();
+    local playerName = GlockTracker:GetPlayerName();
+    topBar:CreateBar();
+    GlockTracker:SetupClothIcon(playerName);
+    GlockTracker:SetupFishIcon(playerName);
+    GlockTracker:SetupHerbIcon(playerName);
+    GlockTracker:SetupLeatherIcon(playerName);
+    GlockTracker:SetupMeatIcon(playerName);
+    GlockTracker:SetupOreIcon(playerName);
 end
 
 function GlockTracker:OnEnable()
@@ -60,9 +66,6 @@ end
 
 function GlockTracker:Scan()
     local playerName = GlockTracker:GetPlayerName();
-    local itemsGroup = window:GetItemsGroup();
 	GlockTracker:ParseBags(playerName);
-    itemsGroup:ReleaseChildren();
-    GlockTracker:PrintCollection(playerName, itemsGroup, window:CurrentVisibleTab());
 end
 

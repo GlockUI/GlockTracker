@@ -8,9 +8,4 @@
 ## X-Embeds: Ace3, LibQTip-1.0, CallbackHandler-1.0, LibStub, LibDataBroker-1.1
 Libs\LibQTip-1.0\LibQTip-1.0.lua
 
-Modules\Glockframe.lua
-Modules\GlockButton.lua
-Modules\GlockLabel.lua
-Modules\GlockTrackingWindow.lua
-
 embeds.xml
