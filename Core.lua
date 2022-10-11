@@ -37,11 +37,12 @@ function GlockTracker:OnEnable()
     self:RegisterEvent("BAG_UPDATE");
     self:RegisterEvent("BANKFRAME_OPENED");
     self:RegisterEvent("BANKFRAME_CLOSED");
-    AceEvent:RegisterMessage("GlockWin_TabChanged", GlockTrackerWindow_TabClicked)
+    AceEvent:RegisterMessage("GlockWin_TabChanged", GlockTrackerWindow_TabClicked);
 end
 
 function GlockTracker:PLAYER_ENTERING_WORLD()
-     GlockTracker:Scan();
+    GlockTracker:Scan();
+    GlockTracker:SetupCurrencyIcon();
 end
 
 function GlockTracker:BAG_UPDATE()

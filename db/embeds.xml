@@ -20,4 +20,6 @@
 	<Script file="Ore\Shadowlands.lua" />
 
 	<Script file="MythicPlus\Common.lua" />
+
+	<Script file="Currency\Common.lua" />
 </Ui>
