@@ -37,7 +37,7 @@ local function OnImageEnter(self)
     local mistsRuns = {};
 
     local runHistory = C_MythicPlus.GetRunHistory(false, true);
-    --[[
+    
     for i=1,#runHistory do
         local run = {
             level = runHistory[i].level,
@@ -61,10 +61,10 @@ local function OnImageEnter(self)
             table.insert(mistsRuns, run);
         end
     end
-    ]]--
+    
 
     -- This is test data:
-
+    --[[
     table.insert( hallsRuns, {level = 1, completed = true} );
     table.insert( hallsRuns, {level = 10, completed = false});
     table.insert( hallsRuns, {level = 7, completed = true} );
@@ -77,6 +77,7 @@ local function OnImageEnter(self)
     table.insert( theaterRuns, {level = 1, completed = true} );
 
     table.insert( mistsRuns, {level = 9, completed = true} );
+    ]]--
 
 
     table.sort( hallsRuns,function (a, b) return a.level < b.level end)
