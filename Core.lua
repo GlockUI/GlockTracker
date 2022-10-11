@@ -29,6 +29,7 @@ function GlockTracker:OnInitialize()
     GlockTracker:SetupLeatherIcon(playerName);
     GlockTracker:SetupMeatIcon(playerName);
     GlockTracker:SetupOreIcon(playerName);
+    GlockTracker:SetupMythicsIcon(playerName);
 end
 
 function GlockTracker:OnEnable()

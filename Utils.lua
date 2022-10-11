@@ -123,6 +123,9 @@ local GlockDefaults = {
         },
         Dragonflight = {
 
+        },
+        Money = {
+
         }
     },
     global = {

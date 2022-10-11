@@ -18,4 +18,6 @@
 
 	<Script file="Ore\Common.lua" />
 	<Script file="Ore\Shadowlands.lua" />
+
+	<Script file="MythicPlus\Common.lua" />
 </Ui>
