@@ -18,6 +18,22 @@ function GlockTracker:ToggleCollectShadowlands(info, val)
     self.db.profile.Shadowlands.Collect = val;
 end
 
+function GlockTracker:CanShowSlCloth(info)
+    return self.db.profile.Shadowlands.ShowCloth;
+end
+
+function GlockTracker:GetShroudedClothNeeded(info)
+    return self.db.profile.Shadowlands.Cloth.ShroudedCloth.Need;
+end
+
+function GlockTracker:GetClothDb(playerName)
+	return self.db.global[playerName].Shadowlands.Cloth
+end
+
+function GlockTracker:GetLightlessSilkNeeded(info)
+    return self.db.profile.Shadowlands.Cloth.LightlessSilk.Need;
+end
+
 function GlockTracker:ShadowlandsParsePersonalBags(playerName)
     if(GlockTracker:CanCollectShadowlands()) then
 
@@ -448,4 +464,260 @@ function GlockTracker:ShadowlandsParsePersonalBank(playerName)
         self.db.global[playerName].Shadowlands.Meat.TenebrousRibs.Bank = meatTenebrous;
         
     end
+end
+
+function GlockTracker:GetFishSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Fish
+end
+
+function GlockTracker:CanShowSlFish(info)
+    return self.db.profile.Shadowlands.ShowFish;
+end
+
+function GlockTracker:SetLostSoleNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.LostSole.Need = val;
+end
+
+function GlockTracker:GetLostSoleNeeded(info)
+    return self.db.profile.Shadowlands.Fish.LostSole.Need;
+end
+
+function GlockTracker:SetSilverPikeNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.SilverPike.Need = val;
+end
+
+function GlockTracker:GetSilverPikeNeeded(info)
+    return self.db.profile.Shadowlands.Fish.SilverPike.Need;
+end
+
+function GlockTracker:SetPocketBonefishNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.PocketBonefish.Need = val;
+end
+
+function GlockTracker:GetPocketBonefishNeeded(info)
+    return self.db.profile.Shadowlands.Fish.PocketBonefish.Need;
+end
+
+function GlockTracker:SetIridescentNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.Iridescent.Need = val;
+end
+
+function GlockTracker:GetIridescentNeeded(info)
+    return self.db.profile.Shadowlands.Fish.Iridescent.Need;
+end
+
+function GlockTracker:SetSpinefinPiranhaNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.SpinefinPiranha.Need = val;
+end
+
+function GlockTracker:GetSpinefinPiranhaNeeded(info)
+    return self.db.profile.Shadowlands.Fish.SpinefinPiranha.Need;
+end
+
+function GlockTracker:SetElysianNeeded(info, val)
+    self.db.profile.Shadowlands.Fish.Elysian.Need = val;
+end
+
+function GlockTracker:GetElysianNeeded(info)
+    return self.db.profile.Shadowlands.Fish.Elysian.Need;
+end
+
+function GlockTracker:GetHerbSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Herbs
+end
+
+function GlockTracker:CanShowSlHerbs(info)
+    return self.db.profile.Shadowlands.ShowHerbalism;
+end
+
+function GlockTracker:SetDeathblossomNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.DeathBlossom.Need = val;
+end
+
+function GlockTracker:GetDeathblossomNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.DeathBlossom.Need;
+end
+
+function GlockTracker:SetNightShadeNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.Nightshade.Need = val;
+end
+
+function GlockTracker:GetNightShadeNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.Nightshade.Need;
+end
+
+function GlockTracker:SetRisingGloryNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.RisingGlory.Need = val;
+end
+
+function GlockTracker:GetRisingGloryNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.RisingGlory.Need;
+end
+
+function GlockTracker:SetMarrowRootNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.Marrowroot.Need = val;
+end
+
+function GlockTracker:GetMarrowRootNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.Marrowroot.Need;
+end
+
+function GlockTracker:SetWidowbloomNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.Widowbloom.Need = val;
+end
+
+function GlockTracker:GetWidowbloomNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.Widowbloom.Need;
+end
+
+function GlockTracker:SetVigilsTorchNeeded(info, val)
+    self.db.profile.Shadowlands.Herbs.VigilsTorch.Need = val;
+end
+
+function GlockTracker:GetVigilsTorchNeeded(info)
+    return self.db.profile.Shadowlands.Herbs.VigilsTorch.Need;
+end
+
+function GlockTracker:GetLeatherSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Leather
+end
+
+function GlockTracker:CanShowSlLeather(info)
+    return self.db.profile.Shadowlands.ShowLeather;
+end
+
+function GlockTracker:SetDesolateNeeded(info, val)
+    self.db.profile.Shadowlands.Leather.Desolate.Need = val;
+end
+
+function GlockTracker:GetDesolateNeeded(info)
+    return self.db.profile.Shadowlands.Leather.Desolate.Need;
+end
+
+function GlockTracker:SetPallidBoneNeeded(info, val)
+    self.db.profile.Shadowlands.Leather.PallidBone.Need = val;
+end
+
+function GlockTracker:GetPallidBoneNeeded(info)
+    return self.db.profile.Shadowlands.Leather.PallidBone.Need;
+end
+
+function GlockTracker:SetCallousNeeded(info, val)
+    self.db.profile.Shadowlands.Leather.Callous.Need = val;
+end
+
+function GlockTracker:GetCallousNeeded(info)
+    return self.db.profile.Shadowlands.Leather.Callous.Need;
+end
+
+function GlockTracker:GetMeatSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Meat
+end
+
+function GlockTracker:CanShowSlMeat(info)
+    return self.db.profile.Shadowlands.ShowMeat;
+end
+
+function GlockTracker:SetAetherealNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.Aethereal.Need = val;
+end
+
+function GlockTracker:GetAetherealNeeded(info)
+    return self.db.profile.Shadowlands.Meat.Aethereal.Need;
+end
+
+function GlockTracker:SetCreepingCrawlerMeatNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.CreepingCrawler.Need = val;
+end
+
+function GlockTracker:GetCreepingCrawlerMeatNeeded(info)
+    return self.db.profile.Shadowlands.Meat.CreepingCrawler.Need;
+end
+
+function GlockTracker:SetPhantasmalHaunchNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.PhantasmalHaunch.Need = val;
+end
+
+function GlockTracker:GetPhantasmalHaunchNeeded(info)
+    return self.db.profile.Shadowlands.Meat.PhantasmalHaunch.Need;
+end
+
+function GlockTracker:SetRawSeraphicWingNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.RawSeraphicWing.Need = val;
+end
+
+function GlockTracker:GetRawSeraphicWingNeeded(info)
+    return self.db.profile.Shadowlands.Meat.RawSeraphicWing.Need;
+end
+
+function GlockTracker:SetShadowyShankNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.ShadowyShank.Need = val;
+end
+
+function GlockTracker:GetShadowyShankNeeded(info)
+    return self.db.profile.Shadowlands.Meat.ShadowyShank.Need;
+end
+
+function GlockTracker:SetTenebrousRibsNeeded(info, val)
+    self.db.profile.Shadowlands.Meat.TenebrousRibs.Need = val;
+end
+
+function GlockTracker:GetTenebrousRibsNeeded(info)
+    return self.db.profile.Shadowlands.Meat.TenebrousRibs.Need;
+end
+
+function GlockTracker:GetOreSlDb(playerName)
+	return self.db.global[playerName].Shadowlands.Ore
+end
+
+function GlockTracker:CanShowSlOre(info)
+    return self.db.profile.Shadowlands.ShowOre;
+end
+
+function GlockTracker:SetLaestriteNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Laestrite.Need = val;
+end
+
+function GlockTracker:GetLaestriteNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Laestrite.Need;
+end
+
+function GlockTracker:SetElethiumNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Elethium.Need = val;
+end
+
+function GlockTracker:GetElethiumNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Elethium.Need;
+end
+
+function GlockTracker:SetSoleniumNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Solenium.Need = val;
+end
+
+function GlockTracker:GetSoleniumNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Solenium.Need;
+end
+
+function GlockTracker:SetOxxeinNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Oxxein.Need = val;
+end
+
+function GlockTracker:GetOxxeinNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Oxxein.Need;
+end
+
+function GlockTracker:SetPhaedrumNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Phaedrum.Need = val;
+end
+
+function GlockTracker:GetPhaedrumNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Phaedrum.Need;
+end
+
+function GlockTracker:SetSinvyrNeeded(info, val)
+    self.db.profile.Shadowlands.Ore.Sinvyr.Need = val;
+end
+
+function GlockTracker:GetSinvyrNeeded(info)
+    return self.db.profile.Shadowlands.Ore.Sinvyr.Need;
 end

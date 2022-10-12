@@ -371,60 +371,6 @@ function GlockTracker:GetPlayerName()
 	return playerName;
 end
 
-function GlockTracker:CreateInlineGroup(title)
-	local group = AceGUI:Create("InlineGroup");
-    group:SetTitle(title);
-    group:SetWidth(500);
-    group:SetLayout("Flow");
-    return group;
-end
-
-function GlockTracker:CreateSimpleGroup()
-	local group = AceGUI:Create("SimpleGroup");
-    group:SetLayout("Flow");
-    group:SetFullWidth(true);
-    return group;
-end
-
-function GlockTracker:CreateRow(labelName, bag, reagent, bank, need)
-    local group = GlockTracker:CreateSimpleGroup();
-
-    local label = AceGUI:Create("GlockLabel");
-    label:SetText(labelName .. ": ");
-    label:SetWidth(110);
-    --label:SetCallback("OnEnter", LabelTooltipOnEnter);
-    --label:SetCallback("OnLeave", LabelTooltipLeave);
-    group:AddChild(label);
-
-    if (need > 0) then
-        local needLabel = AceGUI:Create("Label");
-        needLabel:SetText("Need:" .. need);
-        needLabel:SetWidth(60);
-        group:AddChild(needLabel);
-    else
-        local needLabel = AceGUI:Create("Label");
-        needLabel:SetText("Need: 0");
-        needLabel:SetWidth(60);
-        group:AddChild(needLabel);
-    end
-
-    local bagLabel = AceGUI:Create("Label");
-    bagLabel:SetText("Bag:" .. bag);
-    bagLabel:SetWidth(60);
-    group:AddChild(bagLabel);
-
-    local reagentLabel = AceGUI:Create("Label");
-    reagentLabel:SetText("Reagent:" .. reagent);
-    reagentLabel:SetWidth(80);
-    group:AddChild(reagentLabel);
-
-    local bankLabel = AceGUI:Create("Label");
-    bankLabel:SetText("Bank:" .. bank);
-    bankLabel:SetWidth(60);
-    group:AddChild(bankLabel);
-    return group;
-end
-
 function GlockTracker:CreateLine(labelName, location, bag, reagent, bank, need, toolTip)
      if (need > 0) then
         toolTip:AddLine(labelName, location, "Need:" .. need, "Bag:" .. bag, "Reagent:" .. reagent, "Bank:" .. bank);

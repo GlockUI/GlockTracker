@@ -23,13 +23,6 @@ function GlockTracker:OnInitialize()
     GlockTracker:SetupOptions();
     local playerName = GlockTracker:GetPlayerName();
     topBar:CreateBar();
-    GlockTracker:SetupClothIcon(playerName);
-    GlockTracker:SetupFishIcon(playerName);
-    GlockTracker:SetupHerbIcon(playerName);
-    GlockTracker:SetupLeatherIcon(playerName);
-    GlockTracker:SetupMeatIcon(playerName);
-    GlockTracker:SetupOreIcon(playerName);
-    GlockTracker:SetupMythicsIcon(playerName);
 end
 
 function GlockTracker:OnEnable()
@@ -40,9 +33,8 @@ function GlockTracker:OnEnable()
     AceEvent:RegisterMessage("GlockWin_TabChanged", GlockTrackerWindow_TabClicked);
 end
 
-function GlockTracker:PLAYER_ENTERING_WORLD()
+function GlockTracker:PLAYER_ENTERING_WORLD(isLogin, isReload)
     GlockTracker:Scan();
-    GlockTracker:SetupCurrencyIcon();
 end
 
 function GlockTracker:BAG_UPDATE()
@@ -71,3 +63,6 @@ function GlockTracker:Scan()
 	GlockTracker:ParseBags(playerName);
 end
 
+function GlockTracker:AddWidget(iconWidget)
+	topBar:AddWidget(iconWidget);
+end

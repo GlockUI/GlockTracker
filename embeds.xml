@@ -10,7 +10,6 @@
 	<Script file="Modules\GuiWidgets\GlockButton.lua" />
 	<Script file="Modules\GuiWidgets\GlockLabel.lua" />
 	<Script file="Modules\GuiWidgets\GlockBar.lua" />
-	<Script file="Modules\GlockTrackingWindow.lua" />
 	<Script file="Modules\GlockTopBar.lua" />
 	
 	
